@@ -33,7 +33,7 @@ function App() {
             </header>
             <div className={"body-container margin-top-15 padding-hor-5per"}>
                 <Switch>
-                    <Route exact path={`${config.root}`}
+                    <Route exact path={`/${config.root}`}
                            render={(props) =>
                                <AllGraphs {...props}
                                           graphs={data.all}
@@ -41,12 +41,12 @@ function App() {
                            }
                     />
                     <Route
-                        path={`${config.root}/my-data`}
+                        path={`/${config.root}my-data`}
                         render={(props) => <MyData {...props}
                                                    myData={data.selected}
                                                    sampleName={'1006'}/>}
                     />
-                    <Route path={`${config.root}/description`}
+                    <Route path={`/${config.root}description`}
                            render={(props) =>
                                <Description/>
                            }

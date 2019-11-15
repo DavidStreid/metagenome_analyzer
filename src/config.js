@@ -1,4 +1,4 @@
 const config = {
-    root: '/swabnseq'
+    root: ''
 };
 export default config;
