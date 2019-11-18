@@ -1,15 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import './App.css';
-import MyData from './my-data.js';
+import MyData from './components/my-data.js';
 import AllGraphs from './all-graphs.js';
-import Description from './description.js';
+import Description from './components/description.js';
 import data from './test_data/dist__hits_gte30_blastn_out_06000_GB_111.bam_vs_nt_output';
 import Logo from './resources/igo-logo-partial.png';
-
+import { getAllResults, getRecordResults } from "./services/resultsService";
 import config from './config.js';
 
 function App() {
+    const [summary, setSummary] = useState([]);
+    const [results, setResults] = useState([]);
+
+    const allData = getAllResults()
+        .then((resp) => {
+            const s = resp.summary;
+            const r = resp.results;
+            if(s) setSummary(s);
+            if(r) setResults(r);
+        })
+        .catch(console.log);
+
   return (
     <div>
         <Router>
@@ -36,8 +48,8 @@ function App() {
                     <Route exact path={`/${config.root}`}
                            render={(props) =>
                                <AllGraphs {...props}
-                                          graphs={data.all}
-                                          summaryGraph={data.selected}/>
+                                          graphs={results}
+                                          summaryGraph={summary}/>
                            }
                     />
                     <Route

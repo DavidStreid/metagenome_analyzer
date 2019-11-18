@@ -1,6 +1,12 @@
 p, h1 {
   font-family: Georgia;
 }
+.pos-rel {
+  position: relative;
+}
+.pos-abs {
+  position: absolute;
+}
 .App-header {
   background-color: #007cba;;
   font-size: calc(10px + 2vmin);
@@ -60,4 +66,15 @@ p, h1 {
   border: 1px solid black;
   margin-right: 5px;
   margin-top: 2px;
+}
+.sid-card {
+  width: 400px;
+  margin: auto;
+}
+.id-entry {
+  right: 10px;
+  top: 140px;
+}
+.id-entry-input {
+  width: 110px;
 }

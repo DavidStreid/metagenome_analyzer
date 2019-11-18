@@ -1,4 +1,5 @@
 const config = {
-    root: ''
+    root: '',
+    service: ''
 };
 export default config;
