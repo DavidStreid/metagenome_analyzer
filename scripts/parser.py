@@ -1,4 +1,4 @@
-csv_file = '../src/test_data/fastq/efe9d910-8fe1-4cac-a0b7-015505f715ed/data/level-7.csv'
+csv_file = '/PATH/TO/CSV'
 output_file = './swab_n_seq_results.py'
 f=open(csv_file, "r")
 
