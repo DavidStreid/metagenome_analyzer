@@ -11,7 +11,7 @@ const parseResp = (resp) => {
  */
 export function getAllResults() {
     return axios
-        .get(config.root + '/allresults')
+        .get(`${config.service}/allresults`)
         .then(resp => { return parseResp(resp) })
         .catch(console.log);
 }
@@ -20,7 +20,7 @@ export function getAllResults() {
  * Sends service call to retrieve the individual results
  */
 export const getRecordResults = (id) => {
-    return axios.get(`${config.root}/getRecord?id=${id}`)
+    return axios.get(`${config.service}/getRecord?id=${id}`)
         .then(parseResp)
         .catch(console.log)
 };

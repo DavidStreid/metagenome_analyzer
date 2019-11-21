@@ -51,7 +51,8 @@ function MyData(props) {
             width={800}
             height={550}
             showlegend={true}
-            level={props.level}/>
+            level={props.level}
+            showDownload={true}/>
     </div>;
 
     return <div>

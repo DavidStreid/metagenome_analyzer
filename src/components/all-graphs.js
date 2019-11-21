@@ -11,6 +11,7 @@ import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import {taxonomic_mapping, MAIN_GRAPH_SUMMARY, MAIN_GRAPH_INDIVIDUAL} from '../resources/constants';
 import MyData from "./my-data";
+import DownloadFile from "./common/download";
 
 function AllGraphs(props) {
     const [level, setLevel] = useState('g');    // Level of classification to use - k, p, c, o , f, g, s
@@ -53,7 +54,8 @@ function AllGraphs(props) {
                              width={850}
                              height={550}
                              showlegend={true}
-                             level={level}/>
+                             level={level}
+                             showDownload={false}/>
         }
         return <MyData {...props} level={level}/>
     };
@@ -67,7 +69,7 @@ function AllGraphs(props) {
     return <div>
         <div className={"summary-statistics-container pos-rel"}>
             <Row>
-                <Col xs={12} md={3} xl={2} className={'z-index-1'}>
+                <Col xs={12} sm={4} className={'toggle-container z-index-1'}>
                     <FormControl component="fieldset">
                         <FormLabel component="legend">Taxonomic Rank</FormLabel>
                         <RadioGroup aria-label="taxonomic-rank" name="taxRank" value={level} onChange={handleChange}>
@@ -79,21 +81,22 @@ function AllGraphs(props) {
                             <FormControlLabel value="p" control={<Radio />} label={taxonomic_mapping['p']}/>
                         </RadioGroup>
                     </FormControl>
-                    <ToggleButtonGroup
-                        value={mainGraph}
-                        exclusive
-                        onChange={handleAlignment}
-                        aria-label="mainGraph toggle"
-                        className={"main-graph-toggle"}>
-                        <ToggleButton value="summary" aria-label="mainGraph summary" className={"main-graph-toggle-buttons"}>
-                            <p className={"margin-0"}>Summary</p>
-                        </ToggleButton>
-                        <ToggleButton value="individual" aria-label="mainGraph myData" className={"main-graph-toggle-buttons"}>
-                            <p className={"margin-0"}>My Data</p>
-                        </ToggleButton>
-                    </ToggleButtonGroup>
+                    <div className={"main-graph-toggle"}>
+                        <ToggleButtonGroup
+                            value={mainGraph}
+                            exclusive
+                            onChange={handleAlignment}
+                            aria-label="mainGraph toggle">
+                            <ToggleButton value="summary" aria-label="mainGraph summary" className={"main-graph-toggle-buttons"}>
+                                <p className={"margin-0"}>Summary</p>
+                            </ToggleButton>
+                            <ToggleButton value="individual" aria-label="mainGraph myData" className={"main-graph-toggle-buttons"}>
+                                <p className={"margin-0"}>My Data</p>
+                            </ToggleButton>
+                        </ToggleButtonGroup>
+                    </div>
                 </Col>
-                <Col xs={12} md={9} xl={10}
+                <Col xs={12} sm={8}
                      className={'main-graph-container'}>
                     <h1 className={'text-align-center'}>{graphTitle}</h1>
                     {getMainGraph()}
@@ -117,7 +120,8 @@ function AllGraphs(props) {
                                   width={340}
                                   height={550}
                                   showlegend={false}
-                                  level={level}/>
+                                  level={level}
+                                  showDownload={false}/>
                     </Col>
                 })
             }
